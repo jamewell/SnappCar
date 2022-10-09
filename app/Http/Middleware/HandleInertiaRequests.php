@@ -35,7 +35,6 @@ class HandleInertiaRequests extends Middleware
      */
     public function share(Request $request)
     {
-//        dd($request->user());
         return array_merge(parent::share($request), [
             // Synchronously
             'appName' => config('app.name'),
@@ -45,7 +44,7 @@ class HandleInertiaRequests extends Middleware
              * @phpstan-param User $request->user
              */
             'auth.user' => fn () => $request->user()
-                ? $request->user()->only('id', 'first_name', 'last_name', 'email')
+                ? $request->user()->only('id', 'first_name', 'last_name', 'email', 'role')
                 : null,
 //            'auth' => [
 //                'user' => $request->user(),

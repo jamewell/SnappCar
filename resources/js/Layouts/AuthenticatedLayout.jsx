@@ -3,11 +3,12 @@ import ApplicationLogo from '@/Components/ApplicationLogo';
 import Dropdown from '@/Components/Dropdown';
 import NavLink from '@/Components/NavLink';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink';
+import Sidebar from "@/Components/Sidebar";
 import { Link } from '@inertiajs/inertia-react';
 
 export default function Authenticated({ auth, header, children }) {
     const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);
-
+    console.log(auth)
     return (
         <div className="min-h-screen bg-gray-100">
             <nav className="bg-slate-800 border-b border-gray-100">
@@ -111,13 +112,26 @@ export default function Authenticated({ auth, header, children }) {
                 </div>
             </nav>
 
-            {header && (
-                <header className="bg-white shadow">
-                    <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">{header}</div>
-                </header>
-            )}
+            <div className="flex">
+                {auth.user.role === 'admin' ?
+                    <aside className={`h-screen sticky top-0`}>
+                        <Sidebar></Sidebar>
+                    </aside>
+                    : undefined
+                }
 
-            <main>{children}</main>
+                <main className={`w-full`}>
+                    {header && (
+                        <header className="w-full bg-white shadow">
+                            <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                                {header}
+                            </div>
+                        </header>
+                    )}
+                    {children}
+                </main>
+            </div>
+
         </div>
     );
 }
