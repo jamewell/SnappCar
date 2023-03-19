@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Enums;
+namespace App\Domain\Users\Enums;
 
 use Illuminate\Validation\Rules\Enum;
 

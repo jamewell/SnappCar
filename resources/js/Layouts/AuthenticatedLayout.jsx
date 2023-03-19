@@ -8,7 +8,6 @@ import { Link } from '@inertiajs/inertia-react';
 
 export default function Authenticated({ auth, header, children }) {
     const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);
-    console.log(auth)
     return (
         <div className="min-h-screen bg-gray-100">
             <nav className="bg-slate-800 border-b border-gray-100">
@@ -113,11 +112,10 @@ export default function Authenticated({ auth, header, children }) {
             </nav>
 
             <div className="flex">
-                {auth.user.role === 'admin' ?
+                {auth.user.role === 'admin' &&
                     <aside className={`h-screen sticky top-0`}>
                         <Sidebar></Sidebar>
                     </aside>
-                    : undefined
                 }
 
                 <main className={`w-full`}>

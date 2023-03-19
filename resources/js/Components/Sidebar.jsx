@@ -24,7 +24,7 @@ export default function Sidebar() {
             icon: <HiUsers/>,
             submenu: true,
             submenuItems: [
-                {title: "View users"},
+                {title: "View users", href: "/admin/users"},
                 {title: "Add user"},
                 {title: "Vendors"},
             ]
@@ -64,9 +64,9 @@ export default function Sidebar() {
             </div>
 
             <ul className="pt-2">
-                {Menus.map((menu) => (
+                {Menus.map((menu, index) => (
                     <>
-                        <li className={`text-gray-200 text-sm flex items-center gap-x-4 cursor-pointer
+                        <li key={index} className={`text-gray-200 text-sm flex items-center gap-x-4 cursor-pointer
                             p-2 hover:bg-amber-500 rounded-md ${menu.spacing ? 'mt-9' : 'mt-2'}
                             `} onClick={menu.submenu ? () => setSubMenuOpen(!subMenuOpen) : undefined}>
                             <span className="text-2xl block float-left">
@@ -86,10 +86,12 @@ export default function Sidebar() {
 
                         {menu.submenu && subMenuOpen && open && (
                             <ul>
-                                {menu.submenuItems.map((submenuItem) => (
-                                    <li className="text-gray-200 text-sm flex items-center
+                                {menu.submenuItems.map((submenuItem, subIndex) => (
+                                    <li key={subIndex} className="text-gray-200 text-sm flex items-center
                                     gap-x-4 cursor-pointer p-2 px-5 hover:bg-amber-500 rounded-md">
-                                        {submenuItem.title}
+                                        <Link href={`${submenuItem.href}`}>
+                                            {submenuItem.title}
+                                        </Link>
                                     </li>
                                 ))}
                             </ul>

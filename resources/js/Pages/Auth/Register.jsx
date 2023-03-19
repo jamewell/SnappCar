@@ -8,7 +8,8 @@ import { Head, Link, useForm } from '@inertiajs/inertia-react';
 
 export default function Register() {
     const { data, setData, post, processing, errors, reset } = useForm({
-        name: '',
+        first_name: '',
+        last_name: '',
         email: '',
         password: '',
         password_confirmation: '',
@@ -21,7 +22,11 @@ export default function Register() {
     }, []);
 
     const onHandleChange = (event) => {
-        setData(event.target.name, event.target.type === 'checkbox' ? event.target.checked : event.target.value);
+        setData(
+            event.target.first_name,
+            event.target.last_name,
+            event.target.type === 'checkbox' ? event.target.checked : event.target.value
+        );
     };
 
     const submit = (e) => {
@@ -36,20 +41,53 @@ export default function Register() {
 
             <form onSubmit={submit}>
                 <div>
-                    <InputLabel forInput="name" value="Name" />
+                    <InputLabel forInput="first_name" value="First Name" />
 
                     <TextInput
                         type="text"
-                        name="name"
-                        value={data.name}
+                        name="first_name"
+                        value={data.first_name}
                         className="mt-1 block w-full"
-                        autoComplete="name"
+                        autoComplete="first_name"
                         isFocused={true}
                         handleChange={onHandleChange}
                         required
                     />
 
                     <InputError message={errors.name} className="mt-2" />
+                </div>
+
+                <div>
+                    <InputLabel forInput="last_name" value="Last Name" />
+
+                    <TextInput
+                        type="text"
+                        name="last_name"
+                        value={data.last_name}
+                        className="mt-1 block w-full"
+                        autoComplete="last_name"
+                        isFocused={true}
+                        handleChange={onHandleChange}
+                        required
+                    />
+
+                    <InputError message={errors.name} className="mt-2" />
+                </div>
+
+                <div className="mt-4">
+                    <InputLabel forInput="email" value="Email" />
+
+                    <TextInput
+                        type="email"
+                        name="email"
+                        value={data.email}
+                        className="mt-1 block w-full"
+                        autoComplete="username"
+                        handleChange={onHandleChange}
+                        required
+                    />
+
+                    <InputError message={errors.email} className="mt-2" />
                 </div>
 
                 <div className="mt-4">
