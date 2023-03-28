@@ -1,6 +1,8 @@
 <?php
 
-use App\App\Http\Controllers\Users\ViewUserController;
+use App\App\Http\Controllers\Users\CreateUserController;
+use App\App\Http\Controllers\Users\CreateUserPageController;
+use App\App\Http\Controllers\Users\ViewUsersController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -30,7 +32,9 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::prefix('admin')->group(function () {
-    Route::get('/users', ViewUserController::class);
+    Route::get('/users', ViewUsersController::class)->name('admin.users.index');
+    Route::get('/users/create', CreateUserPageController::class);
+    Route::post('/users/create-user', CreateUserController::class);
 });
 
 require __DIR__.'/auth.php';

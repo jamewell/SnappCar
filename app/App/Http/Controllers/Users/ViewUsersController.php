@@ -7,7 +7,7 @@ use Illuminate\Contracts\Auth\Authenticatable;
 use Inertia\Inertia;
 use Inertia\Response;
 
-class ViewUserController
+class ViewUsersController
 {
     /**
      *@param User $user
