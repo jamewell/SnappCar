@@ -3,6 +3,9 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Domain\Users\Enums\UserRole;
+use App\Domain\Users\Models\Profile;
+use App\Domain\Users\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -12,16 +15,22 @@ class DatabaseSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
         // \App\Models\User::factory(10)->create();
 
-         \App\Domain\Users\Models\User::factory()->create([
-             'first_name' => 'Jamie',
-             'last_name' => 'Wilson',
-             'role' => 'admin',
-             'email' => 'test@admin.com',
-             'password' => bcrypt('password'),
-         ]);
+        $user = User::factory()->create([
+            'first_name' => 'Jamie',
+            'last_name' => 'Wilson',
+            'role' => UserRole::ADMIN,
+            'email' => 'test@admin.com',
+            'password' => bcrypt('password'),
+        ]);
+
+        Profile::factory()->create([
+            'user_id' => $user->obscured_id,
+            'first_name' => 'Jamie',
+            'last_name' => 'Wilson',
+        ]);
     }
 }

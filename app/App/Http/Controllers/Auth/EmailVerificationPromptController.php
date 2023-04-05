@@ -3,7 +3,7 @@
 namespace App\App\Http\Controllers\Auth;
 
 use App\App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
+use App\Infrastructure\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 

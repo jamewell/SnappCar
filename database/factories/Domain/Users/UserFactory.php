@@ -1,12 +1,15 @@
 <?php
 
-namespace Database\Factories;
+namespace Database\Factories\Domain\Users;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Domain\Users\Models\User>
+ * @method \App\Domain\Models\User[]|\Illuminate\Database\Eloquent\Collection create(array $attributes = [], ?\Illuminate\Database\Eloquent\Model $parent = null)
+ * @method \App\Domain\Models\User[]|\Illuminate\Database\Eloquent\Collection createMany(iterable $records)
+ * @method \App\Domain\Models\User                                            createOne(array $attributes = [])
  */
 class UserFactory extends Factory
 {

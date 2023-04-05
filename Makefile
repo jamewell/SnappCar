@@ -4,6 +4,9 @@ analyse:
 migrate:
 	php artisan migrate
 
+migrate-test:
+	php artisan migrate:fresh --database=testing --schema-path=database/schema/mysql-schema.dump
+
 seed:
 	php artisan db:seed
 

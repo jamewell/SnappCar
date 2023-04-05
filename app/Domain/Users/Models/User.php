@@ -2,16 +2,35 @@
 
 namespace App\Domain\Users\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Infrastructure\Models\BaseUserModel;
+use App\Infrastructure\Models\HasObscuredId;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Carbon;
 use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable
+/**
+ * @property int    $id
+ * @property string $obscured_id
+ * @property string $role
+ * @property string $email
+ * @property string $password
+ * @property string $remember_token
+ * @property int    $login_count
+ * @property Carbon $last_login_at
+ * @property Carbon $email_verified_at
+ * @property string $email_verification_token
+ * @property Carbon $deleted_at
+ * @property Carbon $created_at
+ * @property Carbon $updated_at
+ *
+ * @property-read Profile $profile
+ */
+class User extends BaseUserModel
 {
-    use HasApiTokens, HasFactory, Notifiable, SoftDeletes;
+    use HasApiTokens, HasFactory, Notifiable, SoftDeletes, HasObscuredId;
 
     /**
      * The attributes that are mass assignable.
@@ -19,8 +38,6 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'first_name',
-        'last_name',
         'role',
         'email',
         'password',
@@ -44,4 +61,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function profile(): HasOne
+    {
+        return $this->hasOne(Profile::class);
+    }
 }
