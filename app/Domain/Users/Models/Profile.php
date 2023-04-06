@@ -11,7 +11,7 @@ use Illuminate\Support\Carbon;
  * @property int    $user_id
  * @property string $first_name
  * @property string $last_name
- * @property string $gender
+ * @property string|null $gender
  * @property Carbon|null $date_of_birth
  * @property string|null $short_bio
  * @property string|null $phone

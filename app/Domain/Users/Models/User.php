@@ -27,6 +27,11 @@ use Laravel\Sanctum\HasApiTokens;
  * @property Carbon $updated_at
  *
  * @property-read Profile $profile
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder|User newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|User newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|User query()
+ * @method static \Database\Factories\Domain\Users\Models\UserFactory factory()
  */
 class User extends BaseUserModel
 {

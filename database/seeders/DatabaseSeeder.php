@@ -19,18 +19,15 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
 
-        $user = User::factory()->create([
-            'first_name' => 'Jamie',
-            'last_name' => 'Wilson',
+        $user = User::factory()
+            ->withProfile([
+                'first_name' => 'Jamie',
+                'last_name' => 'Wilson',
+            ])
+            ->create([
             'role' => UserRole::ADMIN,
             'email' => 'test@admin.com',
             'password' => bcrypt('password'),
-        ]);
-
-        Profile::factory()->create([
-            'user_id' => $user->obscured_id,
-            'first_name' => 'Jamie',
-            'last_name' => 'Wilson',
         ]);
     }
 }
