@@ -3,6 +3,8 @@
 namespace App\App\Http\Controllers\Auth;
 
 use App\App\Http\Controllers\Controller;
+use App\Domain\Users\Enums\UserRole;
+use App\Domain\Users\Models\Profile;
 use App\Domain\Users\Models\User;
 use App\Infrastructure\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
@@ -36,16 +38,23 @@ class RegisteredUserController extends Controller
     public function store(Request $request): \Illuminate\Http\RedirectResponse
     {
         $request->validate([
-            'name' => 'required|string|max:255',
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
         /** @var Authenticatable $user */
         $user = User::query()->create([
-            'name' => $request->get('name'),
             'email' => $request->get('email'),
             'password' => Hash::make($request->get('password')),
+            'role' => UserRole::RENTER,
+        ]);
+
+        Profile::query()->create([
+            'user_id' => $user->getAuthIdentifier(),
+            'first_name' => $request->get('first_name'),
+            'last_name' => $request->get('last_name'),
         ]);
 
         event(new Registered($user));

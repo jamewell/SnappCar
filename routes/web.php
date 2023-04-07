@@ -15,8 +15,6 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/ww', fn() => bcrypt('password'));
-
 Route::get('/', function () {
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
