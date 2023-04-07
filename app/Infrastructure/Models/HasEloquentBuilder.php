@@ -2,12 +2,14 @@
 
 namespace App\Infrastructure\Models;
 
+use Illuminate\Database\Eloquent\Builder;
+
 trait HasEloquentBuilder
 {
-    /** @var class-string<\Illuminate\Database\Eloquent\Builder */
-    protected ?string $eloquentBuilder;
+    /** @var class-string<Builder> */
+    protected string $eloquentBuilder;
 
-    public function newEloquentBuilder($builder)
+    public function newEloquentBuilder($builder): Builder|App\Infrastructure\Models\BaseModel
     {
         if (isset($this->eloquentBuilder)) {
             return new $this->eloquentBuilder($builder);
