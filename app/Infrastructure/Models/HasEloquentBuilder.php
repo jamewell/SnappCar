@@ -6,10 +6,15 @@ use Illuminate\Database\Eloquent\Builder;
 
 trait HasEloquentBuilder
 {
-    /** @var class-string<Builder> */
-    protected string $eloquentBuilder;
+    /** @var class-string<Builder>|null */
+    protected ?string $eloquentBuilder;
 
-    public function newEloquentBuilder($builder): Builder|App\Infrastructure\Models\BaseModel
+    /**
+     * @param \Illuminate\Database\Query\Builder $builder
+     *
+     * @return \Illuminate\Database\Eloquent\Builder|static
+     */
+    public function newEloquentBuilder($builder)
     {
         if (isset($this->eloquentBuilder)) {
             return new $this->eloquentBuilder($builder);

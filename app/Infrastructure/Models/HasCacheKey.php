@@ -13,7 +13,7 @@ trait HasCacheKey
             $this->getTable(),
             $this->getKey(),
             $date->timestamp,
-            explode('_', $keyNames) /* @phpstan-ignore-line */
+            implode('_', $keyNames)
         );
     }
 }
