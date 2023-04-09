@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {BiChevronDown} from "react-icons/all";
-import {Link} from "@inertiajs/inertia-react";
+import ResponsiveNavLink from "@/Components/ResponsiveNavLink";
 
 export default function SideBarItem({ menu, open }) {
     const [subMenuOpen, setSubMenuOpen] = useState(false);
@@ -15,9 +15,9 @@ export default function SideBarItem({ menu, open }) {
                                 </span>
                 <span className={`text-base font-medium flex-1
                                    duration-500 ${!open && "hidden"}`}>
-                                    <Link href={`${menu.href}`} method={`${menu.logout ? 'post' : 'get'}`}>
+                                    <ResponsiveNavLink href={`${menu.href}`} method={`${menu.logout ? 'post' : 'get'}`}>
                                         {menu.title}
-                                    </Link>
+                                    </ResponsiveNavLink>
                                 </span>
                 {menu.submenu && open && (
                     <BiChevronDown className={`${subMenuOpen && "rotate-180"}`}
