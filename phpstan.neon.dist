@@ -1,0 +1,8 @@
+parameters:
+    paths:
+        - app/Domain
+        - app/Infrastructure
+
+    level: 7
+    checkMissingIterableValueType: false
+    checkGenericClassInNonGenericObjectType: false

@@ -4,6 +4,7 @@ import Dropdown from '@/Components/Dropdown';
 import NavLink from '@/Components/NavLink';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink';
 import { Link } from '@inertiajs/inertia-react';
+import SideBar from "@/Layouts/SideBar/SideBar";
 
 export default function Authenticated({ auth, header, children }) {
     const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);
@@ -111,13 +112,22 @@ export default function Authenticated({ auth, header, children }) {
                 </div>
             </nav>
 
-            {header && (
-                <header className="bg-white shadow">
-                    <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">{header}</div>
-                </header>
-            )}
+            <div className="flex">
+                <aside className="min-h-screen sticky top-0">
+                    <SideBar/>
+                </aside>
 
-            <main>{children}</main>
+                <main className="w-full">
+                    {header && (
+                        <header className="bg-white shadow">
+                            <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">{header}</div>
+                        </header>
+                    )}
+
+                    <main>{children}</main>
+                </main>
+            </div>
+
         </div>
     );
 }
