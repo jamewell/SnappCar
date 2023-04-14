@@ -7,7 +7,7 @@ use App\Domain\Users\Models\User;
 use Inertia\Inertia;
 use Inertia\Response;
 
-class CreateUserController extends Controller
+class ViewAllUsersController extends Controller
 {
     public function __invoke(): Response
     {
