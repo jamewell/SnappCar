@@ -15,3 +15,5 @@ npm-debug.log
 yarn-error.log
 /.idea
 /.vscode
+phpunit-9.6.6.phar
+phpunit-latest.phar

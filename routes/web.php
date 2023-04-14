@@ -1,5 +1,6 @@
 <?php
 
+use App\App\Http\Controllers\Users\CreateUserController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -22,6 +23,10 @@ Route::get('/', function () {
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
     ]);
+});
+
+Route::prefix('users')->group(function () {
+    Route::get('/', CreateUserController::class)->name('users.index');
 });
 
 Route::get('/dashboard', function () {

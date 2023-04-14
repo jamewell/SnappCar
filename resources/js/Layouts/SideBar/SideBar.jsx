@@ -19,7 +19,7 @@ export default function () {
             submenu: true,
             submenuItems: [
                 {title: "Add user"},
-                {title: "View users"}
+                {title: "View users", href: 'users/'}
             ]
         },
         {title: "Profile", icon: <RiProfileLine/>, spacing: true },
