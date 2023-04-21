@@ -18,4 +18,11 @@ enum UserRole: string
             ['id' => self::RENTER, 'name' => ucfirst(self::RENTER->value)],
         ];
     }
+
+    public static function getValues(): array
+    {
+        return array_map(function ($role) {
+            return $role['id']->value;
+        }, self::getAll());
+    }
 }
