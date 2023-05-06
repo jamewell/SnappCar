@@ -24,7 +24,7 @@ export default function EditUser() {
         password: '',
         password_confirmation: '',
     });
-    console.log(data);
+
     function submit(e) {
         e.preventDefault();
         post(route('users.update', user));
@@ -177,7 +177,7 @@ export default function EditUser() {
                                 type="password"
                                 handleChange={e => setData('password', e.target.value)}
                                 error={errors.password}
-                                required={true}
+                                required={false}
                             />
 
                             <FormInput
@@ -186,7 +186,7 @@ export default function EditUser() {
                                 type="password"
                                 handleChange={e => setData('password_confirmation', e.target.value)}
                                 error={errors.password_confirmation}
-                                required={true}
+                                required={false}
                             />
 
                         </div>

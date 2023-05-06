@@ -21,8 +21,7 @@ class UpdateUserController extends Controller
         UpdateProfileAction $updateProfileAction,
     ): RedirectResponse
     {
-//        dd($request->all());
-        $validatedData = $request->validate([
+        $request->validate([
             'first_name' => 'required|string',
             'last_name' => 'required|string',
             'date_of_birth' => 'nullable|date',

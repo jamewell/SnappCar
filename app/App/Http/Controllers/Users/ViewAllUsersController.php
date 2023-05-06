@@ -14,8 +14,19 @@ class ViewAllUsersController extends Controller
         $users = User::query()
             ->with('profile')
             ->get();
+
+
         return Inertia::render('Users/ViewUsers', [
-            'users' => $users,
+            'users' => $users->map(function ($user) {
+                return [
+                    'id' => $user->id,
+                    'email' => $user->email,
+                    'role' => $user->role,
+                    'profile' => $user->profile,
+                    'edit_url' => route('users.edit', compact('user')),
+                    'view_url' => route('users.view', compact('user')),
+                ];
+            })
         ]);
     }
 }

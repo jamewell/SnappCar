@@ -5,6 +5,7 @@ use App\App\Http\Controllers\Users\EditUserPageController;
 use App\App\Http\Controllers\Users\StoreUserController;
 use App\App\Http\Controllers\Users\UpdateUserController;
 use App\App\Http\Controllers\Users\ViewAllUsersController;
+use App\App\Http\Controllers\Users\ViewUserController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -39,6 +40,7 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
         Route::get('/', ViewAllUsersController::class)->name('users.index');
         Route::get('/create', CreateUserPageController::class)->name('users.create');
         Route::get('/edit/{user}', EditUserPageController::class)->name('users.edit');
+        Route::get('/view/{user}', ViewUserController::class)->name('users.view');
         Route::post('/store', StoreUserController::class)->name('users.store');
         Route::post('/update/{user}', UpdateUserController::class)->name('users.update');
     });

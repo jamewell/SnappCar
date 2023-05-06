@@ -1,5 +1,6 @@
 import './bootstrap';
 import '../css/app.css';
+import 'flowbite';
 
 import React from 'react';
 import { render } from 'react-dom';

@@ -12,23 +12,25 @@ export default function ViewUsers({users}) {
                         <div className="flex flex-col">
                             <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                                 <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-                                    <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                                        <table className="min-w-full divide-y divide-gray-200">
-                                            <thead className="bg-gray-50">
+                                    <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
+                                        <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                                            <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                             <tr>
-                                                <th scope="col">ID</th>
-                                                <th scope="col">First Name</th>
-                                                <th scope="col">Last Name</th>
-                                                <th scope="col">Email</th>
-                                                <th scope="col">Role</th>
-                                                <th scope="col">Actions</th>
+                                                <th scope="col" className="px-6 py-3">ID</th>
+                                                <th scope="col" className="px-6 py-3">First Name</th>
+                                                <th scope="col" className="px-6 py-3">Last Name</th>
+                                                <th scope="col" className="px-6 py-3">Email</th>
+                                                <th scope="col" className="px-6 py-3">Role</th>
+                                                <th scope="col" className="px-6 py-3">Actions</th>
                                             </tr>
                                             </thead>
                                             <tbody className="bg-white divide-y divide-gray-200">
                                             {users.map((user) => (
-                                                <tr key={user.id}>
+                                                <tr key={user.id} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                                                     <td className="px-6 py-4 whitespace-nowrap">
-                                                        <div className="text-sm text-gray-900">{user.id}</div>
+                                                        <a href={user.view_url} className="text-indigo-600 hover:text-indigo-900">
+                                                            {user.id}
+                                                        </a>
                                                     </td>
                                                     <td className="px-6 py-4 whitespace-nowrap">
                                                         <div className="text-sm text-gray-900">{user.profile.first_name}</div>
@@ -43,7 +45,7 @@ export default function ViewUsers({users}) {
                                                         <div className="text-sm text-gray-900">{user.role}</div>
                                                     </td>
                                                     <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                                        <a href={route('users.edit', user)} className="text-indigo-600 hover:text-indigo-900">Edit</a>
+                                                        <a href={user.edit_url} className="text-indigo-600 hover:text-indigo-900">Edit</a>
                                                     </td>
                                                 </tr>
                                             ))}
