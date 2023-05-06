@@ -1,6 +1,5 @@
 import {usePage} from "@inertiajs/inertia-react";
 import StandardLayout from "@/Layouts/StandardLayout";
-import Card from "@/Layouts/Card";
 
 
 export default function ViewUser() {
