@@ -18,8 +18,8 @@ export default function () {
             icon: <FaUsers/>,
             submenu: true,
             submenuItems: [
-                {title: "Add user"},
-                {title: "View users"}
+                {title: "Add user", href: '/users/create'},
+                {title: "View users", href: '/users/'}
             ]
         },
         {title: "Profile", icon: <RiProfileLine/>, spacing: true },

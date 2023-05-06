@@ -30,7 +30,9 @@ export default function SideBarItem({ menu, open }) {
                     {menu.submenuItems.map((submenuItem) => (
                         <li className="text-gray-200 text-sm flex items-center
                                             gap-x-4 cursor-pointer p-2 px-5 hover:bg-amber-500 rounded-md">
-                            {submenuItem.title}
+                            <ResponsiveNavLink href={`${submenuItem.href}`}>
+                                {submenuItem.title}
+                            </ResponsiveNavLink>
                         </li>
                     ))}
                 </ul>

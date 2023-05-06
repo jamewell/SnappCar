@@ -1,5 +1,11 @@
 <?php
 
+use App\App\Http\Controllers\Users\CreateUserPageController;
+use App\App\Http\Controllers\Users\EditUserPageController;
+use App\App\Http\Controllers\Users\StoreUserController;
+use App\App\Http\Controllers\Users\UpdateUserController;
+use App\App\Http\Controllers\Users\ViewAllUsersController;
+use App\App\Http\Controllers\Users\ViewUserController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -15,6 +21,7 @@ use Inertia\Inertia;
 |
 */
 
+Route::get('/ww', fn () => \Illuminate\Support\Facades\Hash::make('password'));
 Route::get('/', function () {
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
@@ -24,8 +31,19 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::group(['middleware' => ['auth', 'verified']], function () {
+    Route::get('/dashboard', function () {
+        return Inertia::render('Dashboard');
+    })->name('dashboard');
+
+    Route::prefix('users')->group(function () {
+        Route::get('/', ViewAllUsersController::class)->name('users.index');
+        Route::get('/create', CreateUserPageController::class)->name('users.create');
+        Route::get('/edit/{user}', EditUserPageController::class)->name('users.edit');
+        Route::get('/view/{user}', ViewUserController::class)->name('users.view');
+        Route::post('/store', StoreUserController::class)->name('users.store');
+        Route::post('/update/{user}', UpdateUserController::class)->name('users.update');
+    });
+});
 
 require __DIR__.'/auth.php';
