@@ -194,6 +194,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         \App\Infrastructure\Providers\EventServiceProvider::class,
         \App\Infrastructure\Providers\RouteServiceProvider::class,
+        \Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider::class,
 
     ],
 

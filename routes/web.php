@@ -1,11 +1,13 @@
 <?php
 
+use App\App\Http\Controllers\Scooters\CreateScooterController;
 use App\App\Http\Controllers\Users\CreateUserPageController;
 use App\App\Http\Controllers\Users\EditUserPageController;
 use App\App\Http\Controllers\Users\StoreUserController;
 use App\App\Http\Controllers\Users\UpdateUserController;
 use App\App\Http\Controllers\Users\ViewAllUsersController;
 use App\App\Http\Controllers\Users\ViewUserController;
+use App\App\Http\Controllers\Vehicles\GetVehicleDataController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -21,7 +23,8 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/ww', fn () => \Illuminate\Support\Facades\Hash::make('password'));
+//Route::get('/ww', fn () => \Illuminate\Support\Facades\Hash::make('password'));
+Route::get('/vehicles/license-plate', [GetVehicleDataController::class, '__invoke']);
 Route::get('/', function () {
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
@@ -43,6 +46,15 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
         Route::get('/view/{user}', ViewUserController::class)->name('users.view');
         Route::post('/store', StoreUserController::class)->name('users.store');
         Route::post('/update/{user}', UpdateUserController::class)->name('users.update');
+    });
+
+    Route::prefix('scooters')->group(function () {
+        Route::get('/create', CreateScooterController::class)->name('scooters.create');
+//        Route::get('/edit/{scooter}', \App\App\Http\Controllers\Scooters\EditScooterController::class)->name('scooters.edit');
+//        Route::get('/view/{scooter}', \App\App\Http\Controllers\Scooters\ViewScooterController::class)->name('scooters.view');
+//        Route::get('/', \App\App\Http\Controllers\Scooters\ViewAllScootersController::class)->name('scooters.index');
+//        Route::post('/store', \App\App\Http\Controllers\Scooters\StoreScooterController::class)->name('scooters.store');
+//        Route::post('/update/{scooter}', \App\App\Http\Controllers\Scooters\UpdateScooterController::class)->name('scooters.update');
     });
 });
 

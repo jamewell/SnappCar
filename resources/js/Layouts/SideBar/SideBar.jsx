@@ -22,6 +22,14 @@ export default function () {
                 {title: "View users", href: '/users/'}
             ]
         },
+        {
+            title: "Scooters",
+            icon: <RiEBike2Fill/>,
+            submenu: true,
+            submenuItems: [
+                {title: "Add scooter", href: '/scooters/create'},
+            ]
+        },
         {title: "Profile", icon: <RiProfileLine/>, spacing: true },
         {title: "Logout", icon: <BiLogInCircle/>, href: route('logout'), logout: true },
     ]
@@ -55,9 +63,9 @@ export default function () {
             </div>
 
             <ul className="pt-2">
-                {Menus.map((menu) => (
+                {Menus.map((menu, index) => (
                     <>
-                        <SideBarItem menu={ menu } open={open} />
+                        <SideBarItem menu={ menu } open={open} index={index} />
                     </>
                 ))}
             </ul>

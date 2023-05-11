@@ -31,4 +31,8 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'vehicle' => [
+        'url' => env('VEHICLE_API_URL'),
+        'key' => env('VEHICLE_API_KEY'),
+    ],
 ];
