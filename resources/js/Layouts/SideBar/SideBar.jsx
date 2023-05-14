@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {
     BiLogInCircle,
-    BiSearchAlt2, BsArrowLeft,
+    BiSearchAlt2, BsArrowLeft, FaCar,
     FaUsers,
     MdDashboard,
     RiEBike2Fill,
@@ -23,11 +23,11 @@ export default function () {
             ]
         },
         {
-            title: "Scooters",
-            icon: <RiEBike2Fill/>,
+            title: "Vehicles",
+            icon: <FaCar/>,
             submenu: true,
             submenuItems: [
-                {title: "Add scooter", href: '/scooters/create'},
+                {title: "Add vehicle", href: '/vehicles/create'},
             ]
         },
         {title: "Profile", icon: <RiProfileLine/>, spacing: true },

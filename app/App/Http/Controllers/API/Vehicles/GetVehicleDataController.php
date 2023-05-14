@@ -1,8 +1,9 @@
 <?php
 
-namespace App\App\Http\Controllers\Vehicles;
+namespace App\App\Http\Controllers\API\Vehicles;
 
 use App\Domain\Vehicles\Actions\GetVehicleDataByLicensePlateAction;
+use App\Domain\Vehicles\Data\VehicleData;
 use Illuminate\Http\Request;
 
 class GetVehicleDataController
@@ -10,8 +11,7 @@ class GetVehicleDataController
     public function __invoke(
         Request $request,
         GetVehicleDataByLicensePlateAction $getVehicleDataByLicensePlateAction,
-    ): array {
-        dump('license-plate');
+    ): VehicleData {
         throw_if(!$request->has('license_plate'), new \InvalidArgumentException('license_plate is required'));
 
         $licensePlate = $request->get('license_plate');

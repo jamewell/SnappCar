@@ -2,11 +2,12 @@
 
 namespace App\App\Http\Controllers\Users;
 
+use App\App\Http\Controllers\Controller;
 use App\Domain\Users\Enums\UserRole;
 use Inertia\Inertia;
 use Inertia\Response;
 
-class CreateUserPageController extends \App\App\Http\Controllers\Controller
+class CreateUserPageController extends Controller
 {
     public function __invoke(): Response
     {

@@ -13,11 +13,11 @@ class VehicleData extends Data
         public string $licensePlate,
         public string $make,
         public string $model,
-        public CarType $type,
-        public string $color,
-        public FuelType $fuelType,
-        public Transmission $transmission,
+        public string $type,
+        public int $year,
+        public string $fuelType,
         public int $seats,
+        public ?string $color,
     ) {
     }
 }
