@@ -190,7 +190,11 @@ export default function AddVehicle({transmissions}) {
 
                     {/* Third section */}
                     <div className="text-center">
-                        <button type="submit" className="px-8 py-2 bg-blue-500 text-white rounded-lg">
+                        <button
+                            type="submit"
+                            className="px-8 py-2 bg-blue-500 text-white rounded-lg"
+                            disabled={processing}
+                        >
                             Save
                         </button>
                     </div>

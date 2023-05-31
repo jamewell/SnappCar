@@ -7,6 +7,7 @@ use App\App\Http\Controllers\Users\UpdateUserController;
 use App\App\Http\Controllers\Users\ViewAllUsersController;
 use App\App\Http\Controllers\Users\ViewUserController;
 use App\App\Http\Controllers\Vehicles\CreateVehiclePageController;
+use App\App\Http\Controllers\Vehicles\StoreVehicleController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -47,7 +48,9 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     });
 
     Route::prefix('vehicles')->group(function () {
+//        Route::get('/', ViewAllVehiclesController::class)->name('vehicles.index');
         Route::get('/create', CreateVehiclePageController::class)->name('vehicles.create');
+        Route::post('/store', StoreVehicleController::class)->name('vehicles.store');
     });
 });
 

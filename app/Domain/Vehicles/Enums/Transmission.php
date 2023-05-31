@@ -2,8 +2,12 @@
 
 namespace App\Domain\Vehicles\Enums;
 
+use App\Infrastructure\Enums\DomainEnum;
+
 enum Transmission: string
 {
+    use DomainEnum;
+
     public static function getValues(): array
     {
         return [
