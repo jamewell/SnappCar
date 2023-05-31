@@ -3,39 +3,46 @@ import {useState} from "react";
 import axios from "axios";
 import StandardLayout from "@/Layouts/StandardLayout";
 import Card from "@/Layouts/Card";
+import FormInput from "@/Components/FormInput";
+import FormSelect from "@/Components/FormSelect";
 
 
 
 export default function AddVehicle({transmissions}) {
-    const { data, setData, post, processing, errors } = useForm({
+    const {
+        data,
+        setData,
+        post,
+        processing,
+        errors
+    } = useForm({
         license_plate: '',
         make: '',
         model: '',
         type: '',
         year: '',
-        fuelType: '',
+        fuel_type: '',
         transmission: '',
         seats: '',
         color: '',
     });
-    const [license_plate, setLicensePlate] = useState('');
-
+    console.log(errors);
     const handleLicensePlateChange = async (e) => {
         const newLicensePlate = e.target.value;
-        setLicensePlate(newLicensePlate);
+        // setLicensePlate(newLicensePlate);
 
         try {
             const response = await axios.get(`/api/vehicles/license-plate?license_plate=${newLicensePlate}`);
             const vehicle = response.data;
+            console.log(vehicle);
 
             setData({
-                license_plate: vehicle.license_plate,
+                license_plate: vehicle.licensePlate,
                 make: vehicle.make,
                 model: vehicle.model,
                 type: vehicle.type,
                 year: vehicle.year,
-                fuelType: vehicle.fuelType,
-                transmission: vehicle.transmission,
+                fuel_type: vehicle.fuelType,
                 seats: vehicle.seats,
                 color: vehicle.color,
             })
@@ -47,7 +54,7 @@ export default function AddVehicle({transmissions}) {
 
     function handleSubmit(e) {
         e.preventDefault();
-        post(route('vehicle.store'));
+        post(route('vehicles.store'));
     }
 
     return (
@@ -69,123 +76,100 @@ export default function AddVehicle({transmissions}) {
                             id="license_plate"
                             name="license_plate"
                             type="text"
+                            value={data.license_plate}
                             required
-                            onChange={handleLicensePlateChange}
+                            onChange={(e) => {
+                                setData('license_plate', e.target.value);
+                                handleLicensePlateChange(e);
+                            }}
                             className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500"
                         />
                     </div>
 
                     {/* Second section */}
                     <div className="grid grid-cols-2 gap-4 mb-4">
-                        <div>
-                            <label htmlFor="make" className="block mb-2 text-sm font-medium text-gray-700">
-                                Make
-                            </label>
-                            <input
-                                id="make"
-                                name="make"
-                                type="text"
-                                readOnly
-                                value={data.make}
-                                className="w-full px-4 py-2 border rounded-lg bg-gray-100 focus:outline-none focus:border-blue-500"
-                            />
-                        </div>
-                        <div>
-                            <label htmlFor="model" className="block mb-2 text-sm font-medium text-gray-700">
-                                Model
-                            </label>
-                            <input
-                                id="model"
-                                name="model"
-                                type="text"
-                                readOnly
-                                value={data.model}
-                                className="w-full px-4 py-2 border rounded-lg bg-gray-100 focus:outline-none focus:border-blue-500"
-                            />
-                        </div>
-                        <div>
-                            <label htmlFor="type" className="block mb-2 text-sm font-medium text-gray-700">
-                                Type
-                            </label>
-                            <input
-                                id="type"
-                                name="type"
-                                type="text"
-                                readOnly
-                                value={data.type}
-                                className="w-full px-4 py-2 border rounded-lg bg-gray-100 focus:outline-none focus:border-blue-500"
-                            />
-                        </div>
-                        <div>
-                            <label htmlFor="fuelType" className="block mb-2 text-sm font-medium text-gray-700">
-                                Fuel type
-                            </label>
-                            <input
-                                id="fuelType"
-                                name="fuelType"
-                                type="text"
-                                readOnly
-                                value={data.fuelType}
-                                className="w-full px-4 py-2 border rounded-lg bg-gray-100 focus:outline-none focus:border-blue-500"
-                            />
-                        </div>
-                        <div>
-                            <label htmlFor="year" className="block mb-2 text-sm font-medium text-gray-700">
-                                Year
-                            </label>
-                            <input
-                                id="year"
-                                name="year"
-                                type="text"
-                                readOnly
-                                value={data.year}
-                                className="w-full px-4 py-2 border rounded-lg bg-gray-100 focus:outline-none focus:border-blue-500"
-                            />
-                        </div>
-                        <div>
-                            <label htmlFor="seats" className="block mb-2 text-sm font-medium text-gray-700">
-                                Seats
-                            </label>
-                            <input
-                                id="seats"
-                                name="seats"
-                                type="number"
-                                readOnly
-                                value={data.seats}
-                                className="w-full px-4 py-2 border rounded-lg bg-gray-100 focus:outline-none focus:border-blue-500"
-                            />
-                        </div>
-                        <div>
-                            <label htmlFor="color" className="block mb-2 text-sm font-medium text-gray-700">
-                                Color
-                            </label>
-                            <input
-                                id="color"
-                                name="color"
-                                type="text"
-                                readOnly
-                                value={data.color}
-                                className="w-full px-4 py-2 border rounded-lg bg-gray-100 focus:outline-none focus:border-blue-500"
-                            />
-                        </div>
-                        <div>
-                            <label htmlFor="transmission" className="block mb-2 text-sm font-medium text-gray-700">
-                                Transmission
-                            </label>
-                            <select
-                                id="transmission"
-                                name="transmission"
-                                required={true}
-                                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500"
-                            >
-                                <option value="">Select transmission</option>
-                                {transmissions.map((transmission) => (
-                                    <option key={transmission.id} value={transmission.id}>
-                                        {transmission.value}
-                                    </option>
-                                ))}
-                            </select>
-                        </div>
+                        <FormInput
+                            inputClassName={"w-full px-4 py-2 border rounded-lg bg-gray-100 focus:outline-none focus:border-blue-500"}
+                            labelClassName={"block mb-2 text-sm font-medium text-gray-700"}
+                            label="Make"
+                            name="make"
+                            type="text"
+                            readOnly={true}
+                            value={data.make}
+                            error={errors.make}
+                        />
+                        <FormInput
+                            inputClassName={"w-full px-4 py-2 border rounded-lg bg-gray-100 focus:outline-none focus:border-blue-500"}
+                            labelClassName={"block mb-2 text-sm font-medium text-gray-700"}
+                            label="Model"
+                            name="model"
+                            type="text"
+                            readOnly={true}
+                            value={data.model}
+                            error={errors.model}
+                        />
+                        <FormInput
+                            inputClassName={"w-full px-4 py-2 border rounded-lg bg-gray-100 focus:outline-none focus:border-blue-500"}
+                            labelClassName={"block mb-2 text-sm font-medium text-gray-700"}
+                            label="Type"
+                            name="type"
+                            type="text"
+                            readOnly={true}
+                            value={data.type}
+                            error={errors.type}
+                        />
+                        <FormInput
+                            inputClassName={"w-full px-4 py-2 border rounded-lg bg-gray-100 focus:outline-none focus:border-blue-500"}
+                            labelClassName={"block mb-2 text-sm font-medium text-gray-700"}
+                            label="Year"
+                            name="year"
+                            type="text"
+                            readOnly={true}
+                            value={data.year}
+                            error={errors.year}
+                        />
+                        <FormInput
+                            inputClassName={"w-full px-4 py-2 border rounded-lg bg-gray-100 focus:outline-none focus:border-blue-500"}
+                            labelClassName={"block mb-2 text-sm font-medium text-gray-700"}
+                            label="Fuel type"
+                            name="fuelType"
+                            type="text"
+                            readOnly={true}
+                            value={data.fuel_type}
+                            error={errors.fuel_type}
+                        />
+                        <FormInput
+                            inputClassName={"w-full px-4 py-2 border rounded-lg bg-gray-100 focus:outline-none focus:border-blue-500"}
+                            labelClassName={"block mb-2 text-sm font-medium text-gray-700"}
+                            label="Seats"
+                            name="seats"
+                            type="text"
+                            readOnly={true}
+                            value={data.seats}
+                            error={errors.seats}
+                        />
+                        <FormInput
+                            inputClassName={"w-full px-4 py-2 border rounded-lg bg-gray-100 focus:outline-none focus:border-blue-500"}
+                            labelClassName={"block mb-2 text-sm font-medium text-gray-700"}
+                            label="Color"
+                            name="color"
+                            type="text"
+                            readOnly={true}
+                            value={data.color}
+                            error={errors.color}
+                        />
+                        <FormSelect
+                            labelClassName={"block mb-2 text-sm font-medium text-gray-700"}
+                            selectClassName={"w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500"}
+                            label="Transmission"
+                            name="transmission"
+                            options={transmissions}
+                            required={true}
+                            handleChange={(e) => setData('transmission', e.target.value)}
+                            value={data.transmission}
+                            error={errors.transmission}
+                        />
+
                     </div>
 
                     {/* Third section */}

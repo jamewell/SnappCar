@@ -11,8 +11,8 @@ enum Transmission: string
     public static function getValues(): array
     {
         return [
-           ['id' =>  self::MANUAL->value, 'value' => 'Manual'],
-            ['id' => self::AUTOMATIC->value, 'value' => 'Automatic'],
+           ['id' =>  self::MANUAL->value, 'name' => 'Manual'],
+            ['id' => self::AUTOMATIC->value, 'name' => 'Automatic'],
         ];
     }
 

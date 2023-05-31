@@ -3,14 +3,25 @@ import InputError from "@/Components/InputError";
 import Select from "@/Components/Select";
 import InputLabel from "@/Components/InputLabel";
 
-export default function FormSelect({ label, name, value, handleChange, options, error, required }) {
+export default function FormSelect({
+   label,
+   name,
+   value,
+   handleChange,
+   options,
+   error,
+   required,
+   divClassName,
+   selectClassName,
+   labelClassName,
+}) {
     return (
-        <div className="w-full md:w-1/2 px-3 mb-6 md:mb-1">
-            <InputLabel forInput={name} value={label} />
+        <div className={divClassName}>
+            <InputLabel forInput={name} value={label} className={labelClassName} />
             <Select
                 name={name}
                 value={value}
-                className="mt-1 block w-full"
+                className={selectClassName}
                 handleChange={handleChange}
                 options={options}
                 required={required}

@@ -6,6 +6,7 @@ use App\Domain\Vehicles\Enums\Transmission;
 use App\Infrastructure\Models\BaseModel;
 
 /**
+ * @property int $id
  * @property int $user_id
  * @property string $license_plate
  * @property string $make

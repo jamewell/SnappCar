@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('vehicles', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained();
             $table->string('license_plate');
             $table->string('make');
             $table->string('model');

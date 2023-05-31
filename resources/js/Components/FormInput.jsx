@@ -3,17 +3,30 @@ import InputLabel from "@/Components/InputLabel";
 import TextInput from "@/Components/TextInput";
 import InputError from "@/Components/InputError";
 
-export default function FormInput({ label, name, type, value, handleChange, error, required }) {
+export default function FormInput({
+  label,
+  name,
+  type,
+  value,
+  handleChange,
+  error,
+  required,
+  readOnly = false,
+  divClassName,
+  inputClassName,
+  labelClassName,
+}) {
     return (
-        <div className="w-full md:w-1/2 px-3 mb-6 md:mb-1">
-            <InputLabel forInput={name} value={label} />
+        <div className={divClassName}>
+            <InputLabel forInput={name} value={label} className={labelClassName} />
             <TextInput
                 type={type}
                 name={name}
                 value={value}
-                className="mt-1 block w-full"
+                className={inputClassName}
                 autoComplete={name}
                 isFocused={true}
+                readOnly={readOnly}
                 handleChange={handleChange}
                 required={required}
             />

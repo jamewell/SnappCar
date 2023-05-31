@@ -15,7 +15,7 @@ export default function SideBarItem({ menu, open, index }) {
                                 </span>
                 <span className={`text-base font-medium flex-1
                                    duration-500 ${!open && "hidden"}`}>
-                                    <ResponsiveNavLink href={`${menu.href}`} method={`${menu.logout ? 'post' : 'get'}`}>
+                                    <ResponsiveNavLink as={'button'} href={`${menu.href}`} method={`${menu.logout ? 'post' : 'get'}`}>
                                         {menu.title}
                                     </ResponsiveNavLink>
                                 </span>

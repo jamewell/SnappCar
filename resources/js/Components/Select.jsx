@@ -18,8 +18,9 @@ export default function Select({
                     className
                 }
                 required={required}
-                onChange={(e) => handleChange(e)}
+                onChange={handleChange}
             >
+                <option value="">Select {name}</option>
                 {options.map((option) => (
                     <option key={option.id} value={option.id}>
                         {option.name}

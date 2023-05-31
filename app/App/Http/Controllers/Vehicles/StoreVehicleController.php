@@ -20,6 +20,7 @@ class StoreVehicleController
     )
         : \Illuminate\Http\RedirectResponse
     {
+//        dd($request->all(), $user);
         $request->validate([
             'license_plate' => ['required', 'string'],
             'make' => ['required', 'string'],
