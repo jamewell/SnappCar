@@ -8,6 +8,7 @@ export default function FormInput({
   name,
   type,
   value,
+  placeholder,
   handleChange,
   error,
   required,
@@ -22,7 +23,9 @@ export default function FormInput({
             <TextInput
                 type={type}
                 name={name}
+                id={name}
                 value={value}
+                placeholder={placeholder}
                 className={inputClassName}
                 autoComplete={name}
                 isFocused={true}
