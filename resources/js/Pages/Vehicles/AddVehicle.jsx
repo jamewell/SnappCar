@@ -1,5 +1,4 @@
 import {useForm} from "@inertiajs/inertia-react";
-import {useState} from "react";
 import axios from "axios";
 import StandardLayout from "@/Layouts/StandardLayout";
 import Card from "@/Layouts/Card";
@@ -29,12 +28,10 @@ export default function AddVehicle({transmissions}) {
     console.log(errors);
     const handleLicensePlateChange = async (e) => {
         const newLicensePlate = e.target.value;
-        // setLicensePlate(newLicensePlate);
 
         try {
             const response = await axios.get(`/api/vehicles/license-plate?license_plate=${newLicensePlate}`);
             const vehicle = response.data;
-            console.log(vehicle);
 
             setData({
                 license_plate: vehicle.licensePlate,
@@ -46,7 +43,6 @@ export default function AddVehicle({transmissions}) {
                 seats: vehicle.seats,
                 color: vehicle.color,
             })
-            console.log(data);
         } catch (error) {
             console.log(error);
         }

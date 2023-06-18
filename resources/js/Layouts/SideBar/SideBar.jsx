@@ -28,6 +28,7 @@ export default function () {
             submenu: true,
             submenuItems: [
                 {title: "Add vehicle", href: '/vehicles/create'},
+                {title: "View vehicles", href: '/vehicles'},
             ]
         },
         {title: "Profile", icon: <RiProfileLine/>, spacing: true },
