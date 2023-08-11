@@ -2,9 +2,11 @@
 
 namespace App\Domain\Users\Models;
 
+use App\Domain\Vehicles\Models\Vehicle;
 use App\Infrastructure\Models\BaseUserModel;
 use App\Infrastructure\Models\HasObscuredId;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
@@ -67,5 +69,10 @@ class User extends BaseUserModel
     public function profile(): HasOne
     {
         return $this->hasOne(Profile::class);
+    }
+
+    public function vehicles(): HasMany
+    {
+        return $this->hasMany(Vehicle::class);
     }
 }

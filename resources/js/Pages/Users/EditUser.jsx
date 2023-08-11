@@ -42,6 +42,8 @@ export default function EditUser() {
                     <div className="px-6 py-2">
                         <div className="flex flex-wrap -mx-3 mb-6">
                             <FormInput
+                                divClassName={"w-full md:w-1/2 px-3 mb-6 md:mb-1"}
+                                inputClassName={"mt-1 block w-full"}
                                 label="First name"
                                 name="first_name"
                                 type="text"
@@ -52,6 +54,8 @@ export default function EditUser() {
                             />
 
                             <FormInput
+                                divClassName={"w-full md:w-1/2 px-3 mb-6 md:mb-1"}
+                                inputClassName={"mt-1 block w-full"}
                                 label="Last name"
                                 name="last_name"
                                 type="text"
@@ -62,6 +66,8 @@ export default function EditUser() {
                             />
 
                             <FormInput
+                                divClassName={"w-full md:w-1/2 px-3 mb-6 md:mb-1"}
+                                inputClassName={"mt-1 block w-full"}
                                 label="Date of birth"
                                 name="date_of_birth"
                                 type="date"
@@ -72,6 +78,8 @@ export default function EditUser() {
                             />
 
                             <FormInput
+                                divClassName={"w-full md:w-1/2 px-3 mb-6 md:mb-1"}
+                                inputClassName={"mt-1 block w-full"}
                                 label="Short bio"
                                 name="short_bio"
                                 type="text"
@@ -82,6 +90,8 @@ export default function EditUser() {
                             />
 
                             <FormInput
+                                divClassName={"w-full md:w-1/2 px-3 mb-6 md:mb-1"}
+                                inputClassName={"mt-1 block w-full"}
                                 label="Phone"
                                 name="phone"
                                 type="text"
@@ -92,6 +102,8 @@ export default function EditUser() {
                             />
 
                             <FormInput
+                                divClassName={"w-full md:w-1/2 px-3 mb-6 md:mb-1"}
+                                inputClassName={"mt-1 block w-full"}
                                 label="Address"
                                 name="address"
                                 type="text"
@@ -102,6 +114,8 @@ export default function EditUser() {
                             />
 
                             <FormInput
+                                divClassName={"w-full md:w-1/2 px-3 mb-6 md:mb-1"}
+                                inputClassName={"mt-1 block w-full"}
                                 label="House number"
                                 name="house_number"
                                 type="text"
@@ -112,6 +126,8 @@ export default function EditUser() {
                             />
 
                             <FormInput
+                                divClassName={"w-full md:w-1/2 px-3 mb-6 md:mb-1"}
+                                inputClassName={"mt-1 block w-full"}
                                 label="Postal code"
                                 name="postal_code"
                                 type="text"
@@ -122,6 +138,8 @@ export default function EditUser() {
                             />
 
                             <FormInput
+                                divClassName={"w-full md:w-1/2 px-3 mb-6 md:mb-1"}
+                                inputClassName={"mt-1 block w-full"}
                                 label="City"
                                 name="city"
                                 type="text"
@@ -132,6 +150,8 @@ export default function EditUser() {
                             />
 
                             <FormInput
+                                divClassName={"w-full md:w-1/2 px-3 mb-6 md:mb-1"}
+                                inputClassName={"mt-1 block w-full"}
                                 label="Country"
                                 name="country"
                                 type="text"
@@ -151,6 +171,8 @@ export default function EditUser() {
                     <div className="px-6 py-2">
                         <div className="flex flex-wrap -mx-3 mb-6">
                             <FormInput
+                                divClassName={"w-full md:w-1/2 px-3 mb-6 md:mb-1"}
+                                inputClassName={"mt-1 block w-full"}
                                 label="Email"
                                 name="email"
                                 type="email"
@@ -161,6 +183,8 @@ export default function EditUser() {
                             />
 
                             <FormSelect
+                                divClassName={"w-full md:w-1/2 px-3 mb-6 md:mb-1"}
+                                selectClassName={"mt-1 block w-full"}
                                 label="Role"
                                 name="role"
                                 type="text"
@@ -172,6 +196,8 @@ export default function EditUser() {
                             />
 
                             <FormInput
+                                divClassName={"w-full md:w-1/2 px-3 mb-6 md:mb-1"}
+                                inputClassName={"mt-1 block w-full"}
                                 label="Password"
                                 name="password"
                                 type="password"
@@ -181,6 +207,8 @@ export default function EditUser() {
                             />
 
                             <FormInput
+                                divClassName={"w-full md:w-1/2 px-3 mb-6 md:mb-1"}
+                                inputClassName={"mt-1 block w-full"}
                                 label="Password confirmation"
                                 name="password_confirmation"
                                 type="password"

@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {
     BiLogInCircle,
-    BiSearchAlt2, BsArrowLeft,
+    BiSearchAlt2, BsArrowLeft, FaCar,
     FaUsers,
     MdDashboard,
     RiEBike2Fill,
@@ -20,6 +20,15 @@ export default function () {
             submenuItems: [
                 {title: "Add user", href: '/users/create'},
                 {title: "View users", href: '/users/'}
+            ]
+        },
+        {
+            title: "Vehicles",
+            icon: <FaCar/>,
+            submenu: true,
+            submenuItems: [
+                {title: "Add vehicle", href: '/vehicles/create'},
+                {title: "View vehicles", href: '/vehicles'},
             ]
         },
         {title: "Profile", icon: <RiProfileLine/>, spacing: true },
@@ -55,9 +64,9 @@ export default function () {
             </div>
 
             <ul className="pt-2">
-                {Menus.map((menu) => (
+                {Menus.map((menu, index) => (
                     <>
-                        <SideBarItem menu={ menu } open={open} />
+                        <SideBarItem menu={ menu } open={open} index={index} />
                     </>
                 ))}
             </ul>

@@ -31,4 +31,8 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'vehicle' => [
+        'url' => env('VEHICLE_API_URL', 'https://api.overheid.io/voertuiggegevens/'),
+        'api_key' => env('VEHICLE_API_KEY', '8744e268a53492e9aadf1c5f98ad2336574a33954e7b354339287dffd6c458d3'),
+    ],
 ];
