@@ -1,20 +1,22 @@
 analyse:
 	./vendor/bin/phpstan analyse --memory-limit=2G
 
-migrate:
-	php artisan migrate
+install:
+	docker run --rm \
+        -u "$(id -u):$(id -g)" \
+        -v "$(pwd):/var/www/html" \
+        -w /var/www/html \
+        laravelsail/php82-composer:latest \
+        composer update --ignore-platform-reqs
 
-migrate-test:
-	php artisan migrate:fresh --database=testing --schema-path=database/schema/mysql-schema.dump
+bash:
+	./vendor/bin/sail bash
 
-seed:
-	php artisan db:seed
+up:
+	./vendor/bin/sail up -d
 
-start:
-	composer install
-	php artisan key:generate
-	npm install
-	npm run dev
+down:
+	./vendor/bin/sail down
 
 docs:
 	php artisan scribe:generate
