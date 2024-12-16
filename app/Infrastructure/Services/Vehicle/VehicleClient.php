@@ -3,24 +3,29 @@
 namespace App\Infrastructure\Services\Vehicle;
 
 use App\Domain\Vehicles\Data\VehicleData;
+use Exception;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Http;
+use Throwable;
 
 class VehicleClient
 {
     public function __construct(
-        private readonly string $url,
-        private readonly string $apiKey,
+        private string $url,
+        private string $apiKey,
     )
     {
     }
 
+    /**
+     * @throws Throwable
+     */
     public function getVehicleByLicensePlate(string $licensePlate): VehicleData
     {
         $response = Http::withHeaders(['ovio-api-key' => $this->apiKey])->get($this->url . $licensePlate);
         $vehicleData = json_decode($response->body(), true);
 
-        throw_if(array_key_exists('error', $vehicleData), new \Exception($licensePlate . ' was not found.'));
+        throw_if(array_key_exists('error', $vehicleData), new Exception($licensePlate . ' was not found.'));
 
         return new VehicleData(
             licensePlate: $vehicleData['kenteken'],
